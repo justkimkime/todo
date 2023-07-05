@@ -19,6 +19,7 @@ export default {
       if(this.newTodoItem != ''){
         var obj = {completed:false,item:this.newTodoItem};
         localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+        
         this.clearInput();
       }
     },

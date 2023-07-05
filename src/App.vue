@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <ToDoHeader></ToDoHeader>
-    <ToDoInput></ToDoInput>
-    <ToDoList></ToDoList>
+    <ToDoInput v-on:="addOneItem"></ToDoInput>
+    <ToDoList v-bind:propsdata="TodoItems"></ToDoList>
     <ToDoFooter></ToDoFooter>
   </div>
 </template>
@@ -16,6 +16,25 @@ import ToDoFooter from './components/ToDoFooter.vue';
 
 
 export default {
+  data:function(){
+    return {
+      TodoItems:[]
+    }
+  },
+  methods:{
+    addOneItem:function(){
+
+    }
+
+  },
+  created:function(){
+    if(localStorage.length > 0){
+      for(var i = 0; i < localStorage.length; i ++){
+       this.TodoItems.push( JSON.parse(localStorage.getItem(localStorage.key(i))));
+        //this.TodoItems.push(localStorage.key(i))
+      }
+    }
+  },
   components:{
     'ToDoHeader':ToDoHeader,
     'ToDoInput':ToDoInput,
